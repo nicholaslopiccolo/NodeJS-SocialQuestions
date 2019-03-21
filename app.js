@@ -12,18 +12,16 @@ var param = {
 
 var server = https.createServer(param,app);
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+app.use(bodyParser);
 
 app.use(bodyParser.json());
 
 app.use(express.static("public"));
 
-server.listen(80,function(req,res){
+server.listen(443,function(req,res){
 	console.log('Server started...');
 });
 
 app.get('/',function(req,res){
-	res.end('hello world');
+	res.render('index.html');
 });
